@@ -79,11 +79,11 @@ public class ProfileFragment extends HomeFragment {
         tvFollowing.setVisibility(View.INVISIBLE);
 
         ivProfile = view.findViewById(R.id.ivProfile);
-//        Glide.with(context)
-//                .load(user.getParseFile(Post.KEY_PROFILE_PIC).getUrl())
-//                .circleCrop()
-//                .override(140, 140)
-//                .into(ivProfile);
+        Glide.with(context)
+                .load(user.getParseFile(Post.KEY_PROFILE_PIC).getUrl())
+                .circleCrop()
+                .override(140, 140)
+                .into(ivProfile);
 
         if(user == ParseUser.getCurrentUser()) {
             ivProfile.setOnClickListener(new View.OnClickListener() {

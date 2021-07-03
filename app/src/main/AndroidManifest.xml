@@ -17,7 +17,7 @@
         <!-- make sure within the application tag, otherwise app will crash with XmlResourceParser errors -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.codepath.fileprovider"
+            android:authorities="com.example.fbu_instagram"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
