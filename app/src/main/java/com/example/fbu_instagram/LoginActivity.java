@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String TAG = "LoginActivity";
     Button btLogin;
-    Button btSignup;
+    RelativeLayout rlSignUp;
     EditText etUsername;
     EditText etPassword;
 
@@ -39,11 +40,11 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         btLogin = findViewById(R.id.btLogin);
-        btSignup= findViewById(R.id.btSignup);
+        rlSignUp= findViewById(R.id.rlSignUp);
         etPassword = findViewById(R.id.etPassword);
         etUsername = findViewById(R.id.etUsername);
 
-        btSignup.setOnClickListener(new View.OnClickListener() {
+        rlSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(TextUtils.isEmpty(etPassword.getText()) == true || TextUtils.isEmpty(etUsername.getText()) == true){

@@ -169,7 +169,7 @@ public class ProfileFragment extends HomeFragment {
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(context, "com.codepath.fileprovider", pictureFile);
+        Uri fileProvider = FileProvider.getUriForFile(context, "com.example.fbu_instagram", pictureFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -206,8 +206,13 @@ public class ProfileFragment extends HomeFragment {
                 Bitmap takenImage = BitmapFactory.decodeFile(pictureFile.getAbsolutePath());
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
-                ivProfile.setImageBitmap(takenImage);
-                // TODO: Upload profilepic to parse
+                // -- ivProfile.setImageBitmap(takenImage);
+                Glide.with(context)
+                        .load(takenImage)
+                        .circleCrop()
+                        .override(140, 140)
+                        .into(ivProfile);
+                // Upload pic to Parse
                 updateProfilePic(new ParseFile(pictureFile));
             } else { // Result was a failure
                 Toast.makeText(context, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
