@@ -7,6 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragment">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"
+        android:src="@drawable/outline_done_white_18"
+        app:backgroundTint="#FFFFFF"
+        app:elevation="6dp" />
+
     <RelativeLayout
         android:id="@+id/rlDescription"
         android:layout_width="match_parent"
@@ -24,8 +37,10 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
             android:layout_toEndOf="@+id/ivPicture"
+            android:background="@android:color/transparent"
             android:hint="Write a caption..."
-            android:background="@android:color/transparent"/>
+            android:textColor="#333333"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/ivPicture"
@@ -51,6 +66,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:text="Tag People"
+        android:textColor="#333333"
         android:textSize="16sp" />
 
     <View
@@ -70,6 +86,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:text="Add Location"
+        android:textColor="#333333"
         android:textSize="16sp" />
 
     <View
@@ -89,6 +106,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:text="Add Fundraiser"
+        android:textColor="#333333"
         android:textSize="16sp" />
 
     <View
@@ -112,6 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:text="Also post to"
+            android:textColor="#333333"
             android:textSize="16sp" />
 
         <TextView
@@ -123,6 +142,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="15dp"
             android:text="Facebook"
+            android:textColor="#333333"
             android:textSize="16sp" />
 
         <TextView
@@ -134,6 +154,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="15dp"
             android:text="Twitter"
+            android:textColor="#333333"
             android:textSize="16sp" />
 
         <TextView
@@ -145,6 +166,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="15dp"
             android:text="Tumblr"
+            android:textColor="#333333"
             android:textSize="16sp" />
 
         <Switch
@@ -197,19 +219,7 @@
         android:layout_below="@+id/fifthLine"
         android:layout_alignStart="@+id/tvFundraiser"
         android:layout_marginTop="16dp"
-        android:text="Advanced Settings" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:clickable="true"
-        android:foregroundTint="#FFFFFF"
-        android:src="@drawable/outline_done_white_18"
-        app:backgroundTint="#1778F2" />
+        android:text="Advanced Settings"
+        android:textColor="#333333" />
 
 </RelativeLayout>

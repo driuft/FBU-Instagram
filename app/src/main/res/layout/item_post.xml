@@ -35,7 +35,7 @@
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="antpena_" />
+            tools:text="driuft" />
 
         <TextView
             android:id="@+id/textView"
@@ -116,7 +116,7 @@
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold"
-        tools:text="1232 Likes" />
+        tools:text="9001 likes" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -129,18 +129,28 @@
         android:fontFamily="sans-serif-light"
         android:textColor="#000000"
         android:textSize="16sp"
-        tools:text="This is a test caption for my posts on instaclone" />
+        tools:text="This is a story all about how my life got..." />
 
     <TextView
         android:id="@+id/tvTimestamp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvDescription"
+        android:layout_below="@id/tvViewComments"
         android:layout_marginStart="12dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:textSize="12sp"
         tools:text="2m ago" />
+
+    <TextView
+        android:id="@+id/tvViewComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDescription"
+        android:layout_alignStart="@id/tvDescription"
+        android:layout_marginTop="5dp"
+        android:textSize="14sp"
+        tools:text="View all 3 comments" />
 
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,13 +19,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.example.fbu_instagram.Adapter.PostAdapter;
 import com.example.fbu_instagram.Adapter.ProfileAdapter;
 import com.example.fbu_instagram.EndlessRecyclerViewScrollListener;
 import com.example.fbu_instagram.R;
@@ -53,7 +57,7 @@ public class ProfileFragment extends HomeFragment {
     TextView tvFollowers;
     ProfileAdapter adapter;
     File pictureFile;
-    String userImg = "";
+    ImageView ivCompose;
     String pictureFileName = "photo.jpg";
 
     public ProfileFragment(Context context, ParseUser user){
@@ -80,6 +84,7 @@ public class ProfileFragment extends HomeFragment {
         tvFollowing.setVisibility(View.INVISIBLE);
 
         ivProfile = view.findViewById(R.id.ivProfile);
+        ivCompose = view.findViewById(R.id.ivCompose);
 
         // Load user profile image with a try/catch (in case of no image)
         try {
@@ -107,7 +112,7 @@ public class ProfileFragment extends HomeFragment {
         }
 
         tvHandle = view.findViewById(R.id.tvHandle);
-        tvHandle.setText("@" + user.getUsername());
+        tvHandle.setText(user.getUsername());
 
         swipeContainer = view.findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -140,6 +145,15 @@ public class ProfileFragment extends HomeFragment {
         rvPosts.addOnScrollListener(scrollListener);
         lastPost = 0;
         queryPost();
+
+        ivCompose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity) context;
+                Fragment myFragment = new PostFragment(context);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, myFragment).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
@@ -161,7 +175,7 @@ public class ProfileFragment extends HomeFragment {
                     tvPosts.setVisibility(View.VISIBLE);
                     tvFollowers.setVisibility(View.VISIBLE);
                     tvFollowing.setVisibility(View.VISIBLE);
-                    tvPosts.setText(String.format("%d Posts", objects.size()));
+                    tvPosts.setText(String.valueOf(objects.size()));
                     posts.clear();
                     posts.addAll(objects);
                     adapter.notifyDataSetChanged();
