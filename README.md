@@ -15,12 +15,12 @@ The following **required** functionality is completed:
 - [X] User can take a photo, add a caption, and post it to "Instagram"
 - [X] User can view the last 20 posts submitted to "Instagram"
 - [X] User can pull to refresh the last 20 posts submitted to "Instagram"
-- [ ] User can tap a post to view post details, including timestamp and caption.
+- [X] User can tap a post to view post details, including timestamp and caption.
 
 The following **stretch** features are implemented:
 
-- [ ] Style the login page to look like the real Instagram login page.
-- [ ] Style the feed to look like the real Instagram feed.
+- [X] Style the login page to look like the real Instagram login page.
+- [X] Style the feed to look like the real Instagram feed.
 - [X] User should switch between different tabs - viewing all posts (feed view), capture (camera and photo gallery view) and profile tabs (posts made) using fragments and a Bottom Navigation View.
 - [X] User can load more posts once he or she reaches the bottom of the feed using endless scrolling.
 - [X] Show the username and creation time for each post
@@ -28,7 +28,7 @@ The following **stretch** features are implemented:
 - User Profiles:
   - [X] Allow the logged in user to add a profile photo
   - [X] Display the profile photo with each post
-  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+  - [X] Tapping on a post's username or profile photo goes to that user's profile page
   - [X] User Profile shows posts in a grid view
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [X] User can like a post and see number of likes for each post in the post details screen.
