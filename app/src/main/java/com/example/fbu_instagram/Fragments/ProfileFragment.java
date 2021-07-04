@@ -53,6 +53,7 @@ public class ProfileFragment extends HomeFragment {
     TextView tvFollowers;
     ProfileAdapter adapter;
     File pictureFile;
+    String userImg = "";
     String pictureFileName = "photo.jpg";
 
     public ProfileFragment(Context context, ParseUser user){
@@ -79,11 +80,22 @@ public class ProfileFragment extends HomeFragment {
         tvFollowing.setVisibility(View.INVISIBLE);
 
         ivProfile = view.findViewById(R.id.ivProfile);
-        Glide.with(context)
-                .load(user.getParseFile(Post.KEY_PROFILE_PIC).getUrl())
-                .circleCrop()
-                .override(140, 140)
-                .into(ivProfile);
+
+        // Load user profile image with a try/catch (in case of no image)
+        try {
+            Glide.with(context)
+                    .load(user.getParseFile(Post.KEY_PROFILE_PIC).getUrl())
+                    .circleCrop()
+                    .override(140, 140)
+                    .into(ivProfile);
+        } catch (NullPointerException e) {
+            Glide.with(context)
+                    .load(R.drawable.instagram_blank)
+                    .circleCrop()
+                    .override(140, 140)
+                    .into(ivProfile);
+        }
+
 
         if(user == ParseUser.getCurrentUser()) {
             ivProfile.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +123,7 @@ public class ProfileFragment extends HomeFragment {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
         scrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {

@@ -3,6 +3,7 @@ package com.example.fbu_instagram.Adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.fbu_instagram.App;
+import com.example.fbu_instagram.Fragments.DetailFragment;
 import com.example.fbu_instagram.Fragments.ProfileFragment;
 import com.example.fbu_instagram.R;
 import com.example.fbu_instagram.Model.Post;
-import com.example.fbu_instagram.R;
 
 import java.util.Date;
 import java.util.List;
@@ -78,10 +79,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             ibSend = itemView.findViewById(R.id.ibSend);
             tvLikes = itemView.findViewById(R.id.tvLikes);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AppCompatActivity activity = (AppCompatActivity) context;
+                    Fragment myFragment = new DetailFragment(context, getAdapterPosition());
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, myFragment).addToBackStack(null).commit();
+                }
+            });
         }
 
         public void bind(Post post){
-            tvDescription.setText(post.getDescription());
+            String description = "<b>" + post.getUser().getUsername() + "</b> " + post.getDescription();
+            tvDescription.setText(Html.fromHtml(description));
             tvUserhandle.setText(post.getUser().getUsername());
             tvLikes.setText(String.format("%d Likes", post.getLikes()));
 
@@ -90,13 +100,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvTimestamp.setText(dateStr);
 
             if(post.getLikeStatus() == true){
-                Drawable unwrapped = AppCompatResources.getDrawable(context, R.drawable.ufi_heart_active);
+                Drawable unwrapped = AppCompatResources.getDrawable(context, R.drawable.outline_favorite_black_18);
                 Drawable wrapped = DrawableCompat.wrap(unwrapped);
                 DrawableCompat.setTint(wrapped, Color.RED);
                 ibLike.setImageDrawable(wrapped);
             }
             else {
-                Drawable unwrapped = AppCompatResources.getDrawable(context, R.drawable.ufi_heart);
+                Drawable unwrapped = AppCompatResources.getDrawable(context, R.drawable.outline_favorite_border_black_18);
                 Drawable wrapped = DrawableCompat.wrap(unwrapped);
                 DrawableCompat.setTint(wrapped, Color.BLACK);
                 ibLike.setImageDrawable(wrapped);
@@ -143,14 +153,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         public void changeLikeButton (boolean likeStatus, Post post){
             if(likeStatus == true){
-                Drawable unwrapped = AppCompatResources.getDrawable(context, R.drawable.ufi_heart_active);
+                Drawable unwrapped = AppCompatResources.getDrawable(context, R.drawable.outline_favorite_black_18);
                 Drawable wrapped = DrawableCompat.wrap(unwrapped);
                 DrawableCompat.setTint(wrapped, Color.RED);
                 ibLike.setImageDrawable(wrapped);
                 tvLikes.setText(String.format("%d Likes", post.getLikes()));
             }
             else {
-                Drawable unwrapped = AppCompatResources.getDrawable(context, R.drawable.ufi_heart);
+                Drawable unwrapped = AppCompatResources.getDrawable(context, R.drawable.outline_favorite_border_black_18);
                 Drawable wrapped = DrawableCompat.wrap(unwrapped);
                 DrawableCompat.setTint(wrapped, Color.BLACK);
                 ibLike.setImageDrawable(wrapped);

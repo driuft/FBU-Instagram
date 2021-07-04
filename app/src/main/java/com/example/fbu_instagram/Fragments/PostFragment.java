@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import com.example.fbu_instagram.MainActivity;
 import com.example.fbu_instagram.R;
 import com.example.fbu_instagram.Model.Post;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -43,8 +44,7 @@ public class PostFragment extends Fragment {
     Context context;
 
     File pictureFile;
-    Button btTakepicture;
-    Button btSubmit;
+    FloatingActionButton fabSubmit;
     EditText etDescription;
     ImageView ivPicture;
     MenuItem bar;
@@ -67,19 +67,18 @@ public class PostFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         bar = MainActivity.miActionProgressItem;
-        btTakepicture = view.findViewById(R.id.btTakePicture);
-        btSubmit = view.findViewById(R.id.btSubmit);
+        fabSubmit = view.findViewById(R.id.fabSubmit);
         etDescription = view.findViewById(R.id.etDescription);
         ivPicture = view.findViewById(R.id.ivPicture);
 
-        btTakepicture.setOnClickListener(new View.OnClickListener() {
+        ivPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchCamera();
             }
         });
 
-        btSubmit.setOnClickListener(new View.OnClickListener() {
+        fabSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ParseUser currentUser = ParseUser.getCurrentUser();
@@ -88,8 +87,9 @@ public class PostFragment extends Fragment {
                     etDescription.setError("Cannot be empty!");
                     return;
                 }
-                if(pictureFile == null || ivPicture.getDrawable() == null){
+                if(pictureFile == null || ivPicture.getDrawable() == getResources().getDrawable(android.R.drawable.ic_menu_report_image)){
                     Toast.makeText(context, "Picture cannot be empty!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 savePost(description, currentUser);
             }

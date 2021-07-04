@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
         bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setItemIconTintList(null);
         fragment = new HomeFragment(context);
         fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
