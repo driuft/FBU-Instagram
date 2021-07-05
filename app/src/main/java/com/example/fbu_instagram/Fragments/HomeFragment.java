@@ -21,6 +21,7 @@ import com.example.fbu_instagram.EndlessRecyclerViewScrollListener;
 import com.example.fbu_instagram.MainActivity;
 import com.example.fbu_instagram.R;
 import com.example.fbu_instagram.Model.Post;
+import com.example.fbu_instagram.databinding.FragmentHomeBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
