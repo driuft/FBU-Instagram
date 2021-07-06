@@ -3,7 +3,8 @@ package com.example.fbu_instagram;
 import android.app.Application;
 import android.util.Log;
 
-import com.example.fbu_instagram.Model.Post;
+import com.example.fbu_instagram.Models.Comment;
+import com.example.fbu_instagram.Models.Post;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -15,6 +16,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ParseObject.registerSubclass(Comment.class);
         ParseObject.registerSubclass(Post.class);
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_app_id))
