@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,11 +27,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
-import com.example.fbu_instagram.Adapter.PostAdapter;
-import com.example.fbu_instagram.Adapter.ProfileAdapter;
+import com.example.fbu_instagram.Adapters.ProfileAdapter;
 import com.example.fbu_instagram.EndlessRecyclerViewScrollListener;
 import com.example.fbu_instagram.R;
-import com.example.fbu_instagram.Model.Post;
+import com.example.fbu_instagram.Models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -87,20 +85,11 @@ public class ProfileFragment extends HomeFragment {
         ivCompose = view.findViewById(R.id.ivCompose);
 
         // Load user profile image with a try/catch (in case of no image)
-        try {
-            Glide.with(context)
-                    .load(user.getParseFile(Post.KEY_PROFILE_PIC).getUrl())
-                    .circleCrop()
-                    .override(140, 140)
-                    .into(ivProfile);
-        } catch (NullPointerException e) {
-            Glide.with(context)
-                    .load(R.drawable.instagram_blank)
-                    .circleCrop()
-                    .override(140, 140)
-                    .into(ivProfile);
-        }
-
+        Glide.with(context)
+                .load(user.getParseFile(Post.KEY_PROFILE_PIC).getUrl())
+                .circleCrop()
+                .override(140, 140)
+                .into(ivProfile);
 
         if(user == ParseUser.getCurrentUser()) {
             ivProfile.setOnClickListener(new View.OnClickListener() {

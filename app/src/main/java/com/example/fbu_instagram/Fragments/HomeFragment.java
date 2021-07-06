@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,12 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.fbu_instagram.Adapter.PostAdapter;
+import com.example.fbu_instagram.Adapters.PostAdapter;
 import com.example.fbu_instagram.EndlessRecyclerViewScrollListener;
-import com.example.fbu_instagram.MainActivity;
 import com.example.fbu_instagram.R;
-import com.example.fbu_instagram.Model.Post;
-import com.example.fbu_instagram.databinding.FragmentHomeBinding;
+import com.example.fbu_instagram.Models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;

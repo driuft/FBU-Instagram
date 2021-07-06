@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,7 +24,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.fbu_instagram.MainActivity;
 import com.example.fbu_instagram.R;
-import com.example.fbu_instagram.Model.Post;
+import com.example.fbu_instagram.Models.Post;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -92,6 +91,7 @@ public class PostFragment extends Fragment {
                     return;
                 }
                 savePost(description, currentUser);
+                getFragmentManager().popBackStackImmediate();
             }
         });
     }
